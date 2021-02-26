@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		
+		<link rel="stylesheet" href="style.css">
+		
+		<script type="text/javascript">
+			//eliminating backtracking
+			window.history.forward();
+			function noBack() { window.history.forward(); }
+		</script>
+	
+	</head>
+	
+	<body class="body-all" onload="noBack();" onpageshow="if (event.persisted) noBack();" onunload="">
+		
+		<form action="admin.jsp" method="post">
+			
+			<p class="text">AdminID : <input class="input-bar" type="text" name="uname" required><br>
+			<p class="text" id="pin-text">Password : <input class="input-bar" type="password" name="pass" required></p><br>
+			<input class="submit-button" type="submit" value="PROCEED">
+		
+		</form>
+	
+	</body>
+
+</html>

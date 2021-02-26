@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		
+		<link rel="stylesheet" href="style.css">
+		
+		<script type="text/javascript">
+			//eliminating backtracking
+			window.history.forward();
+			function noBack() { window.history.forward(); }
+		</script>
+	
+	</head>
+	
+	<body class="body-all" onload="noBack();" onpageshow="if (event.persisted) noBack();" onunload="">
+		
+		<form action="login.jsp" method="post">
+			
+			<p class="text">Mobile Number : <input class="input-bar" type="tel" name="u_num" pattern="[0-9]{10}"  required><br>
+			<input class="submit-button" type="submit" value="Start Shopping!">
+		
+		</form>
+		<form action="adminlogin.html" method="post">
+			
+			<input class="submit-button" type="submit" value="Admin Login">
+		
+		</form>
+	</body>
+
+</html>
