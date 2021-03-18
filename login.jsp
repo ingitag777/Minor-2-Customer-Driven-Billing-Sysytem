@@ -5,6 +5,9 @@ pageEncoding="ISO-8859-1"%>
 <%@page import="java.sql.DriverManager" %>
 <%@page import="java.sql.Connection" %>
 
+<!DOCTYPE html>
+<html>
+
 <%
 	Connection conn =null;
 	Statement stmt =null;
@@ -43,11 +46,14 @@ pageEncoding="ISO-8859-1"%>
 		res.close();
 		stmt.close();
 		conn.close();
+		
+	%>
+	<jsp:forward page="home.html"/>
+	<%
 	}
 	
 	catch(Exception e)
 	{
-		e.printStackTrace();
 		//in case of any exception
 		out.println("Problem encountered.<br> You cannot proceed further.<br>");
 	}
@@ -55,8 +61,7 @@ pageEncoding="ISO-8859-1"%>
 %>
   
 
-<!DOCTYPE html>
-<html>
+
 
 	<head>
 	
