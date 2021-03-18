@@ -40,7 +40,7 @@ pageEncoding="ISO-8859-1"%>
 					//passing control to home page
 					//RequestDispatcher reqdisp1 = request.getRequestDispatcher("home.jsp");
 					//reqdisp1.forward(request, response);
-					response.sendRedirect("inventory.html");
+					response.sendRedirect("inventory.jsp");
 				}
 			}
 		}
