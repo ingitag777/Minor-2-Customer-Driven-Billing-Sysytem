@@ -1,0 +1,70 @@
+@CHARSET "ISO-8859-1";
+
+.body-all {
+	background-color: #ffffff;
+	background-image: url("img2.jpeg");
+	background-position: right; /* align the image */
+	background-attachment: fixed;
+	background-repeat: no-repeat; /* Do not repeat the image */
+	background-size: 650px 450px;
+	text-align: left;
+	margin-top: 50px;
+	margin-right: 500px;
+}
+
+#withdraw-body {
+	margin-right: 245px;
+}
+
+.input-bar {
+	background-color: #C3C3C3;
+	border: solid 1px;
+	margin-left: 10px;
+}
+
+.text {
+	margin-right: 245px;
+	font-weight: bold;
+}
+
+
+
+.submit-button {
+	margin-right: 20px;
+	background-color: #e07c1f;
+	border-color: black;
+	font-size: 14px;
+	font-weight: bold;
+}
+.admin-button {
+	margin-left: 660px;
+	margin-top: 0px;
+	background-color: #55cab9;
+	border-color: black;
+	font-size: 18px;
+	font-weight: bold;
+}
+
+.bill-button{
+	margin-left: 350px;
+	margin-top: 50px;
+	margin-bottom: 10px;
+	background-color: #55cab9;
+	border-color: black;
+	font-size: 13px;
+	font-weight: bold;
+}
+
+.home-button{
+	text-align: center;
+	margin-right: 250px;
+	margin-top: 0px;
+	margin-bottom: 10px;
+	background-color: #e07c1f;
+	border-color: black;
+	font-size: 12px;
+	font-weight: bold;
+}
+h1 {
+	font-family: Fantasy;
+}

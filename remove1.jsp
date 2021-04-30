@@ -8,7 +8,6 @@ pageEncoding="ISO-8859-1"%>
 <%
 	Connection conn =null;
 	Statement stmt =null;
-	ResultSet res = null;
 	
 	try
 	{
@@ -47,6 +46,8 @@ pageEncoding="ISO-8859-1"%>
 	<head>
 	
 		<link rel="stylesheet" href="style.css">
+		
+		<title>Inventory</title>
 		
 		<script type="text/javascript">
 			

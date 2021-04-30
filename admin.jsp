@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <%@ page import="java.sql.*"%> <%--import database package --%>
 <%@ page import="java.io.*" %>
 <%@page import="java.sql.DriverManager" %>
@@ -7,8 +6,8 @@ pageEncoding="ISO-8859-1"%>
 
 <%
 	Connection con =null;
-	Statement st =null;
-	ResultSet rs = null;
+	Statement stmt =null;
+	ResultSet res = null;
 	
 	//query to be executed
 	String query = "select * from admin_details";
@@ -22,16 +21,16 @@ pageEncoding="ISO-8859-1"%>
 		Class.forName("com.mysql.jdbc.Driver");
 		//connection to the database
 		con = DriverManager.getConnection("jdbc:mysql://localhost:3306/c_d_b_s","root","root");
-		st = con.createStatement();
+		stmt = con.createStatement();
 		//executing query to fetch the database records
-		rs =st.executeQuery(query);
+		res =stmt.executeQuery(query);
 		
 		//validation of credentials
-		while(rs.next())
+		while(res.next())
 		{
 			//getting account id and pin from database
-			String admin_id = rs.getString(1);
-			String password = rs.getString(2);
+			String admin_id = res.getString(1);
+			String password = res.getString(2);
 			
 			if(admin_id.equals(loginId))
 			{
@@ -52,11 +51,10 @@ pageEncoding="ISO-8859-1"%>
 	{
 		//in case of any exception
 		out.println("Problem encountered.<br> You cannot proceed further.<br>");
-	}
-	
-	//redirection to login page
+	}	
 %>
-
+	
+	<%--//redirection to login page--%>
 
 <!DOCTYPE html>
 <html>
