@@ -8,60 +8,78 @@ pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html>
 
-<%
-	Connection conn =null;
-	Statement stmt =null;
-	ResultSet res = null;
-	
-	//query to be executed
-	String query = "SELECT * from customer_details";
-	try
-	{
-		//storing credentials entered by user
-		long login_num = Long.parseLong(request.getParameter("u_num"));
-		
-		//registering the driver class
-		Class.forName("com.mysql.jdbc.Driver");
-		//connection to the database
-		conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/c_d_b_s","root","root");
-		stmt = conn.createStatement();
-		//executing query to fetch the database records
-		res =stmt.executeQuery(query);
-		boolean condition = true;
-		//checking if existing customer if not then add in record
-		for(int i=1; res.next(); i++)
-		{
-			//getting user number from database
-			long user_num = res.getLong(1);
-			
-			if(user_num == login_num)
-				condition = false;
-		}
-		if(condition)
-		{
-			query = "INSERT INTO customer_details VALUES(" + login_num + ")";
-			//executing query to update the database records
-			stmt.executeUpdate(query);
-		}
-		res.close();
-		stmt.close();
-		conn.close();
-		
-	%>
-	<jsp:forward page="home.html"/>
 	<%
-	}
+		Connection conn =null;
+		Statement stmt =null;
+		ResultSet res = null;
+		
+		try
+		{
+			//storing credentials entered by user
+			long login_num = Long.parseLong(request.getParameter("u_num"));
+			String login_name = request.getParameter("u_name");
+			//query to be executed
+			String query;
+			//registering the driver class
+			Class.forName("com.mysql.jdbc.Driver");
+			//connection to the database
+			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/c_d_b_s","root","root");
+			stmt = conn.createStatement();
+			if(!login_name.isEmpty())
+			{
+				query = "UPDATE customer_details SET User_Name = '" + login_name + "' WHERE Phone_No = " + login_num + " AND User_Name = 'User'";
+				stmt.executeUpdate(query);
+				stmt.close();
+				stmt = conn.createStatement();
+			}
+			query = "SELECT EXISTS(SELECT * FROM customer_details WHERE Phone_No = "+ login_num + ")";
+			//executing query to check if records exists im database
+			res =stmt.executeQuery(query);
+			res.next();
+			//checking if existing customer if not then add in record
+			if(res.getInt(1) == 0 )
+			{
+				res.close();
+				stmt.close();
+				stmt = conn.createStatement();
+				query = "INSERT INTO customer_details VALUES(" + login_num + "" + ( login_name.isEmpty() ? "" : ",'" + login_name + "')");		
+				//executing query to update the database records
+				stmt.executeUpdate(query);
+				query = "CREATE TABLE IF NOT EXISTS cart_" + login_num + "(" +
+						"Barcode varchar(14) NOT NULL," +
+						"Quantity decimal(5,0) unsigned NOT NULL," +
+						"PRIMARY KEY (Barcode)" +
+						")";
+				stmt.executeUpdate(query);
+				query = "ALTER TABLE cart_" + login_num + 
+						" ADD FOREIGN KEY (Barcode) REFERENCES inventory(Barcode)";
+				stmt.executeUpdate(query);
+				query = "CREATE VIEW vcart_" + login_num + " AS " + 
+						"(SELECT a.Barcode, a.Product_Name, a.Company_Name, a.Price_perPiece_Rs, b.Quantity FROM inventory a, cart_" + login_num + " b WHERE a.Barcode = b.Barcode)";
+				stmt.executeUpdate(query);
+			}
+			query = "TRUNCATE TABLE cart_" + login_num + "";
+			stmt.executeUpdate(query);
+			stmt.close();
+			conn.close();
+			HttpSession session1 = request.getSession();
+			//This method binds an object to this session, using the name specified.
+			session1.setAttribute("user_num", ""+login_num+"");
+			
+	%>
 	
-	catch(Exception e)
-	{
-		//in case of any exception
-		out.println("Problem encountered.<br> You cannot proceed further.<br>");
-	}
+	<jsp:forward page="home.jsp"/>
 	
-%>
-  
-
-
+	<%
+		}
+		catch(Exception e)
+		{
+			//in case of any exception
+			out.println("Problem encountered.<br> You cannot proceed further.<br>");
+			e.printStackTrace();
+		}
+	
+	%>
 
 	<head>
 	

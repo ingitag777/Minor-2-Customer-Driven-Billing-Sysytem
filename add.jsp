@@ -20,7 +20,7 @@ pageEncoding="ISO-8859-1"%>
 		String c_name = request.getParameter("company");
 		
 		//query to be executed
-		String query = "INSERT INTO inventory VALUES('" + barcode + "','" + p_name + "'," + qty + "," + rate + ",'" + c_name + "')";
+		String query = "INSERT INTO inventory VALUES('" + barcode + "','" + p_name + "','" + c_name +"'," + rate + "," + qty + ")";
 		
 		//registering the driver class
 		Class.forName("com.mysql.jdbc.Driver");
@@ -51,6 +51,8 @@ pageEncoding="ISO-8859-1"%>
 	
 		<link rel="stylesheet" href="style.css">
 		
+		<title>Inventory</title>
+		
 		<script type="text/javascript">
 			
 			//redirection to login page 
@@ -58,15 +60,16 @@ pageEncoding="ISO-8859-1"%>
 	            window.location = "inventory.jsp";
 	         }            
 	         setTimeout('Redirect()', 1000);
-         
-	         //eliminating backtracking
-	         window.history.forward();
+	         
+			//eliminating backtracking
+			window.history.forward();
 			function noBack() { window.history.forward(); }
+         
 		</script>
 	
 	</head>
 	
-	<body class="body-all" id="withdraw-body" onload="noBack();" onpageshow="if (event.persisted) noBack();" onunload="">
+	<body class="body-all" id="withdraw-body"onload="noBack();" onpageshow="if (event.persisted) noBack();" onunload="">
 	</body>
 	
 </html>

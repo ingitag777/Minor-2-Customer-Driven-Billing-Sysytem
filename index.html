@@ -4,6 +4,7 @@
 	<head>
 		
 		<link rel="stylesheet" href="style.css">
+		<title>Login</title>
 		
 		<script type="text/javascript">
 			//eliminating backtracking
@@ -13,20 +14,23 @@
 	
 	</head>
 	
-	<body class="body-all" onload="noBack();" onpageshow="if (event.persisted) noBack();" onunload="">
+	<body class="body-all" >
 		
 		<h1 style="text-align:center">Customer Driven Billing System</h1>
-		<form action="login.jsp" method="post">
+		<form action="adminlogin.html" method="post" >
 			
-			<p class="text">Mobile Number : <input class="input-bar" type="tel" name="u_num" pattern="[0-9]{10}"  required><br>
-			<input class="submit-button" type="submit" value="Start Shopping!">
+			<input class="admin-button" type="submit" value="Admin Login">
 		
 		</form>
-		<form action="adminlogin.html" method="post">
+		<form action="login.jsp" method="post" onload="noBack();" onpageshow="if (event.persisted) noBack();" onunload="">
 			
-			<input class="submit-button" type="submit" value="Admin Login">
+			<p class="text">Name (Optional): <input class="input-bar" type="text" name="u_name"><br>
+			<p class="text">Mobile Number : <input class="input-bar" type="tel" name="u_num" pattern="[0-9]{10}" required><br>
+			<br>
+			<input class="submit-button" style="margin-left: 70px" type="submit" value="Start Shopping!">
 		
 		</form>
+
 	</body>
 
 </html>

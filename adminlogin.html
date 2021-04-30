@@ -4,6 +4,7 @@
 	<head>
 		
 		<link rel="stylesheet" href="style.css">
+		<title>Admin Login</title>
 		
 		<script type="text/javascript">
 			//eliminating backtracking
@@ -15,13 +16,15 @@
 	
 	<body class="body-all" onload="noBack();" onpageshow="if (event.persisted) noBack();" onunload="">
 		
-		<h1 style="text-align:center">Admin Login</h1>
+		<h1 style="text-align:left">Admin Login</h1>
 		
 		<form action="admin.jsp" method="post">
 			
-			<p class="text">AdminID : <input class="input-bar" type="text" name="uname" required><br>
-			<p class="text" id="pin-text">Password : <input class="input-bar" type="password" name="pass" required></p><br>
-			<input class="submit-button" type="submit" value="PROCEED">
+			<p class="text" style="margin-top:100px">AdminID : <input class="input-bar" type="text" name="uname" required><br>
+			<p class="text" id="pin-text">Password : <input class="input-bar" type="password" name="pass" required><br>
+			<br>
+			<br>
+			<input class="submit-button" type="submit" value="Login">
 		
 		</form>
 	
