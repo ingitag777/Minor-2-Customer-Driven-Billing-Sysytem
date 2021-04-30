@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
 
@@ -5,30 +6,33 @@
 		
 		<link rel="stylesheet" href="style.css">
 		
+		<title>Inventory</title>
+		
 		<script type="text/javascript">
 			//eliminating backtracking
 			window.history.forward();
 			function noBack() { window.history.forward(); }
 		</script>
-	
+		
 	</head>
 	
 	<body class="body-all" onload="noBack();" onpageshow="if (event.persisted) noBack();" onunload="">
 		
-		<h1 style="text-align:center">Add Item</h1>
+		<h1 style="text-align:left">Add Item</h1><br>
 		
 		<form action="add.jsp" method="post">
 			
 			<p class="text">Barcode	: <input class="input-bar" type="text" name="barcode" maxlength=14 required>
-			<br/>
+			<br>
 			<p class="text">Product Name : <input class="input-bar" type="text" name="product" required>
-			<br/>
+			<br>
 			<p class="text">Quantity : <input class="input-bar" type="text" name="quantity" maxlength=5 required>
-			<br/>
+			<br>
 			<p class="text">Price (in Rs) :	<input class="input-bar" type="text" name="price" maxlength=4 required>
-			<br/>
+			<br>
 			<p class="text">Company : <input class="input-bar" type="text" name="company" required>
-			<br/>
+			<br>
+			<br>
 			<input class="submit-button" type="submit" value="Add!">
 		
 		</form>
